@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
-tasks = []
 
+app.secret_key = os.environ.get('SECRET_KEY', 'fallback-key-for-local') 
+tasks = []
 @app.route('/')
 def index():
     return render_template('index.html', tasks=tasks)
